@@ -38,6 +38,7 @@ class StringStack implements Stack {
 	int size;
 	int top;
 	int i;
+	int flag=0;
 	
 	StringStack(int size) {
 		this.size = size;
@@ -60,11 +61,18 @@ class StringStack implements Stack {
 		 * 탑 하나 줄이고
 		 * 탑+1 자리 반환하기
 		 */
+		
 		// System.out.println(top);
-		if(top==-1) {
-			return "현재 스택에 저장된 실수가 존재하지 않습니다.";
+		// System.out.println(length());
+		// System.out.println(flag);
+		if(top==-1 && flag==0) {
+			System.out.println("현재 스택에 저장된 실수가 존재하지 않습니다.");
+			return "";
+		} else if (top==-1) {
+			return "";
 		}
 		
+		flag=1;
 		//System.out.println(top);
 		top--;
 		return stack[top+1];
@@ -102,20 +110,25 @@ public class Chapter05_practice_09 {
 			System.out.print("문자열 입력 >> ");
 			input_str = scan.next();
 			
-			if(input_str.equals("그만"))
+			if(input_str.equals("그만")) {
 				break;
-			
+			}
 			if(stack.push(input_str)) {
 				// 다 차면 true 반환하게 해놨음
 				System.out.println("스택이 꽉 차서 푸시 불가!");
 				continue;
-			}
+			} 
 		}
 		
-		System.out.print("스택에 저장된 모든 문자열 팝 : ");
-		// System.out.println(stack.length());				// 정상 출력 확인
-		for(i=0;i<stack.length()+2;i++) {
-			System.out.print(stack.pop() + " ");
+		// System.out.println(stack.length());
+		if(stack.length()==0) {
+			stack.pop();
+		} else {
+			System.out.print("스택에 저장된 모든 문자열 팝 : ");
+			// System.out.println(stack.length());				// 정상 출력 확인
+			for(i=0;i<stack.length()+2;i++) {
+				System.out.print(stack.pop() + " ");
+			}
 		}
 
 		scan.close();
