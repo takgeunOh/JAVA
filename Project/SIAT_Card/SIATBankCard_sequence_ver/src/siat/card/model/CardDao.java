@@ -50,7 +50,7 @@ public class CardDao {
 			flag=1;
 		}
 		
-		rs.previous();				// 마지막 행 커서 포인트
+		rs.previous();				
 		int sequence=0;
 		if(flag==1)
 			sequence = rs.getInt("seq_no");

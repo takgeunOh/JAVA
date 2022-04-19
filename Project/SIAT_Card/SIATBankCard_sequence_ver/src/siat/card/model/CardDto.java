@@ -12,6 +12,7 @@ public class CardDto {
 		
 	}
 	
+	
 	public CardDto(int no, String cardName, String cardType, int annualFee, int cardRecord, String profit) {
 		this.no = no;
 		this.cardName = cardName;
